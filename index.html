@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link id="iconImage" rel="icon" href="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://metatags.io/" />
+<meta property="twitter:title" content="Shell Surfer" />
+<meta property="twitter:description" content="Search the web as quick as a wave with the Shell Surfer web browser" />
+<meta property="og:image" content="https://cdn.glitch.global/369bf8ef-379b-4729-800d-6d834c6d626c/Icon.png?v=1744480750837" />
+      <meta
+      property="og:image"
+      content="https://cdn.glitch.global/369bf8ef-379b-4729-800d-6d834c6d626c/Icon.png?v=1744480750837"
+    />
+    <title>Shell Surfer</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            background-color: #f8f8f8;
+        }
+
+button, input {
+    font-family: inherit;
+    pointer-events: auto !important;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    font-size: 2vw;
+    background: radial-gradient(circle, rgba(0,255,175,1) 0%, rgba(55,125,177,1) 100%);
+    padding: 0.5rem 1rem;
+    transition: background 500ms ease, transform 500ms ease;
+}
+
+button:hover {transform: scale(1.1);} button:focus{transform: scale(0.01);}
+
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+                   webkit-user-drag: none;
+         user-select: none;
+         pointer-events: none;
+            color: #202124;
+            margin: 0;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .image {
+            width: 6vw;
+            margin-top: 20px;
+                   webkit-user-drag: none;
+         user-select: none;
+         pointer-events: none;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .parallax {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            z-index: -1;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+  <div style="width:100vw; height:100vh; position:fixed; z-index:0; transition:1000ms; opacity:0; background: #14a7e0; background: linear-gradient(180deg,rgba(20, 167, 224, 1) 0%, rgba(113, 87, 199, 1) 100%);" id="blue"> </div>
+    <div class="parallax"></div>
+    <div class="content">
+        <img id="logo" class="image" src="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png" alt="Icon">
+        <h1 id="text1">Surf the web as quick as a wave</h1>
+        <button id="button" onclick="installpage()">Install</button>
+    </div>
+
+    <script>
+      const paramstring = window.location.search;
+      const urlparams = new URLSearchParams(paramstring);
+      const updatemode = urlparams.get("updatemode");
+        window.addEventListener('scroll', () => {
+            const content = document.querySelector('.content');
+            const h1 = document.getElementById("text1");
+            const text2 = document.getElementById("text2");
+            const image = document.getElementById("logo");
+
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            if (scrollPosition + windowHeight > content.offsetTop) {
+                content.style.opacity = 1;
+                content.style.transform = 'translateY(0)';
+            }
+
+            if (scrollPosition + windowHeight > h1.offsetTop) {
+                h1.style.opacity = 1;
+                h1.style.transform = 'translateY(0)';
+            }
+
+            if (scrollPosition + windowHeight > image.offsetTop + 100) {
+                image.style.opacity = 1;
+                image.style.transform = 'translateY(0)';
+            }
+        });
+
+        function installpage() {
+          document.getElementById("blue").style.zIndex = "1000";
+          document.getElementById("blue").style.opacity = "1";
+            window.location.href = "https://drive.usercontent.google.com/download?id=1fT_7tb7YOKXNNkiGs-rRXALLKJFV1LhS&export=download&authuser=0";
+        }
+      if (updatemode) {
+          const h1 = document.getElementById("text1");
+           const button = document.getElementById("button");
+        h1.textContent = "Update Shell Surfer";
+                button.textContent = "Update";
+      }
+    </script>
+</body>
+</html>
