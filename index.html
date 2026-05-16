@@ -104,20 +104,20 @@ button:hover {transform: scale(1.1);} button:focus{transform: scale(0.01);}
             const text2 = document.getElementById("text2");
             const image = document.getElementById("logo");
 
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
+            const scrollpos = window.scrollY;
+            const winh = window.innerHeight;
 
-            if (scrollPosition + windowHeight > content.offsetTop) {
+            if (scrollpos + winh > content.offsetTop) {
                 content.style.opacity = 1;
                 content.style.transform = 'translateY(0)';
             }
 
-            if (scrollPosition + windowHeight > h1.offsetTop) {
+            if (scrollpos + winh > h1.offsetTop) {
                 h1.style.opacity = 1;
                 h1.style.transform = 'translateY(0)';
             }
 
-            if (scrollPosition + windowHeight > image.offsetTop + 100) {
+            if (scrollpos + winh > image.offsetTop + 100) {
                 image.style.opacity = 1;
                 image.style.transform = 'translateY(0)';
             }
