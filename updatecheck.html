@@ -1,0 +1,76 @@
+<head>
+<meta name="google-site-verification" content="SPbVe9xSNy_LetuAy4KmI5Idasvy-wn0ZfAjaLimHlc" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2356668624460070"
+     crossorigin="anonymous"></script>
+  <style>
+    body {
+            font-family: 'Roboto', sans-serif;
+        overflow: hidden;
+        }
+            .content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    button {
+      width:20vw;
+      height:33vh;
+    }
+    input {
+       height:33vh;
+      font-size:6vw;
+      width:35vw;
+    }
+    .input-row input,
+.input-row button {
+    width: auto;
+    flex: 1;
+}
+  </style>
+</head>
+<link rel="stylesheet" type="text/css" href="https://turtlewave.netlify.app/neededforeverypage.css" id="stylesheet">
+   <script src="/script.js" defer></script>
+<title>TurtleWave APK Version Check</title>
+<div class="content">
+<div class="content" style="flex-direction: column;">
+  <h3 id="status">
+    Input the version that your browser is currently displaying
+  </h3>
+  <div class="input-row">
+    <input id="versioninput">
+    <button style="background-color:lime;" id="checkbutton" onclick="check()">
+      Check
+    </button>
+  </div>
+</div>
+  <script>
+    // manual stuff start :(
+    const latestbeta = "1.6BETA";
+    const latestversion = "1.6R";
+    // manual stuff end :)
+     const betaIsNewerThanRelease = (Number(latestbeta.replace("BETA", "")) >  Number(latestversion.replace("R", "")));
+    let checked = false;
+  function check() {
+    if (checked === false) {
+      let input = document.getElementById("versioninput").value.trim().toLowerCase();
+     if (input === latestversion.toLowerCase()) {
+      document.getElementById("status").textContent = "Your browser has the newest release!";
+    } else if (input === latestbeta.toLowerCase() && betaIsNewerThanRelease) {
+        document.getElementById("status").textContent = "Your browser is up to date! (Debug info: You are on the BETA version of an unfinished release)";
+    } else {
+      checked = true;
+      document.getElementById("status").textContent = "Your browser needs an update";
+       document.getElementById("checkbutton").textContent = "Install Update";
+      document.getElementById("versioninput").style.display = "none";
+    }
+    } else {
+       document.getElementById("status").textContent = "Scroll down on the new window to update";
+    window.open("/shell-surf/index.html?updatemode=y");
+    }
+   }
+  </script>
+</div>
