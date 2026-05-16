@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Colourful Toolbar",
+    "description": "Colourful items on the toolbar",
+    "code": "get(`document.getElementById('tabs').style.color = 'lime'; document.getElementById('bookmarks').style.color = 'yellow'; document.getElementById('settingsbutton').style.color = 'blue';`)",
+    "tag": "verified"
+  },
+  {
+    "title": "Labelled Buttons",
+    "description": "Toolbar buttons use text instead of icons",
+    "code": "get(`document.getElementById('settingsbutton').textContent = 'S'; document.getElementById('tabs').textContent = 'T'; document.getElementById('bookmarks').textContent = 'B';`)",
+    "tag": "verified"
+  },
+  {
+    "title": "Resizable Toolbar",
+    "description": "Self-explanatory",
+    "code": "get(`document.querySelectorAll('*').forEach(function(el) { el.style.resize = 'both'; el.style.overflow = 'auto'; });`)",
+    "tag": null
+  },
+  {
+    "title": "NoMoreScroll Lite",
+    "description": "A minimal version of NoMoreScroll with no customization options",
+    "code": "get(`setInterval(() => (['youtube.com/shorts','tiktok.com','instagram.com/reels','snapchat.com','facebook.com','reddit.com/?feed=home','reddit.com/r/popular','endlessdoomscroller.com','x.com/home','4chan.org','boredpanda.com','hive.blog'].some(site => lasturl.includes(site)) && (ipcRenderer.send('file', '/offline.html?info=NoMoreScroll%20Lite%20Has%20Blocked%20This%20Webpage'))), 5000);`)",
+    "tag": "verified"
+  },
+  {
+    "title": "No More Favicons",
+    "description": "Removes the favicon from your toolbar",
+    "code": "get(`document.getElementById('favicon').style.display = 'none';`)",
+    "tag": "verified"
+  },
+  {
+    "title": "Not A Virus",
+    "description": "This is not a virus bro",
+    "code": "get(`setInterval(() => { alert('Did you actually fall for this???') }, 10000);`)",
+    "tag": "flagged"
+  }
+]
