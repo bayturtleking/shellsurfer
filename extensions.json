@@ -20,6 +20,12 @@
     "code": "get(`document.querySelectorAll('*').forEach(function(el) { el.style.resize = 'both'; el.style.overflow = 'auto'; });`)",
     "tag": null
   },
+  {
+    "title": "Global Dark Mode",
+    "description": "Attempts to force dark mode on every page.",
+    "code": "get(`ipcRenderer.on('url-changed',function()%7BipcRenderer.send('exec-in-page',Buffer.from('ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgiKiIpLmZvckVhY2goZnVuY3Rpb24oZWwpe3ZhciBzPXdpbmRvdy5nZXRDb21wdXRlZFN0eWxlKGVsKTtpZihzLmJhY2tncm91bmRJbWFnZSE9PSJub25lIilyZXR1cm47dmFyIGJnPXMuYmFja2dyb3VuZENvbG9yO2lmKGJnPT09InRyYW5zcGFyZW50Inx8Ymc9PT0icmdiYSgwLCAwLCAwLCAwKSIpe2VsLnN0eWxlLmJhY2tncm91bmRDb2xvcj0iIzExMSI7cmV0dXJuO312YXIgbT1iZy5tYXRjaCgvXGQrL2cpO2lmKG0mJm0ubGVuZ3RoPj0zKXt2YXIgcj0rbVswXSxnPSttWzFdLGI9K21bMl07dmFyIGJyaWdodD0ocitnK2IpLzM7aWYoYnJpZ2h0PjE4MCllbC5zdHlsZS5iYWNrZ3JvdW5kQ29sb3I9IiMxMTEiO2Vsc2UgaWYoYnJpZ2h0PjgwJiZicmlnaHQ8PTE4MCllbC5zdHlsZS5iYWNrZ3JvdW5kQ29sb3I9IiMyMjIiO312YXIgYz1zLmNvbG9yO3ZhciBtMj1jLm1hdGNoKC9cZCsvZyk7aWYobTImJm0yLmxlbmd0aD49Myl7dmFyIHIyPSttMlswXSxnMj0rbTJbMV0sYjI9K20yWzJdO3ZhciBicmlnaHQyPShyMityMitiMikvMztpZihicmlnaHQyPDEwMCllbC5zdHlsZS5jb2xvcj0iI2VlZSI7fX0pO2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoImlucHV0LGJ1dHRvbix0ZXh0YXJlYSxzZWxlY3QiKS5mb3JFYWNoKGZ1bmN0aW9uKGVsKXtlbC5zdHlsZS5iYWNrZ3JvdW5kPSIjMjIyIjtlbC5zdHlsZS5jb2xvcj0iI2VlZSI7ZWwuc3R5bGUuYm9yZGVyQ29sb3I9IiM0NDQiO30pOw==','base64').toString())%7D)`)",
+    "tag": null
+}
     {
     "title": "Classic Bookmarks",
     "description": "Brings back the old Bookmarks page instead of it being on the toolbar",
