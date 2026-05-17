@@ -171,7 +171,7 @@ window.addEventListener("DOMContentLoaded", loadExtensions);
         function get(code) {
             window.location.href = window.location.href + `.html?load=${encodeURI(code)}`;
             if (code.includes("ss.extension.clear")) return;
-            alert("Your extension is being installed. Restart Shell Surfer once it is finished.");
+            alert("Attempting to install... If you receive no follow-up prompt, it has failed.");
         }
             window.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
