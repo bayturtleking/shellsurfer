@@ -119,10 +119,10 @@
     <div class="content" id="main">
         <h1 style="font-size:3vw;">Extension Store</h1>
         <p style="font-size:1.2rem;">
-            Installing multiple extensions at once is now possible, but it is in beta and many glitches will occur if the extensions are incompatiable.
+            Installing multiple extensions at once is now possible, but it is in beta, and many glitches will occur if the extensions are incompatible.
         </p>
         <button onclick="(el=>{el.style.display='block';void el.offsetWidth;el.style.transform='scale(1)' })(document.getElementById('manage'))">Manage Extensions</button>
-        <button style="margin:1%; background-color:lightgreen; color:black;" onclick="window.location.href='/shell-surf/extensions?d=verifiedonly'">Official Extensions Only</button>
+        <button style="margin:1%; background-color:lightgreen; color:black;" onclick="window.location.href='/extensions?d=verifiedonly'">Official Extensions Only</button>
         <div id="manage">
             <h2>
                 Delete all extensions
@@ -132,9 +132,9 @@
                 </button>
             </h2>
             <h2>
-                Check for incompatiable extensions
+                Check for incompatible extensions
                 <button style="color:black; font-weight:bold; font-size:1.2rem;"
-                        onclick="alert('Currently checking. If you get brought to a white screen with no error message, the system has detected no incompatiable extensions.'); window.location.href='https://turtlewave.glitch.me/shell-surf/loadurl.html?load=function.extensionincompatiable'">
+                        onclick="alert('Currently checking. If you get brought to a white screen with no error message, the system has detected no incompatible extensions.'); window.location.href='https://turtlewave.glitch.me/shell-surf/loadurl.html?load=function.extensionincompatiable'">
                     Check
                 </button>
             </h2>
