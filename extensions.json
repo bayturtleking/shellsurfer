@@ -17,11 +17,17 @@
     "code": "get(`document.querySelectorAll('*').forEach(function(el) { el.style.resize = 'both'; el.style.overflow = 'auto'; });`)",
     "tag": null
   },
+    {
+    "title": "Classic Bookmarks",
+    "description": "Brings back the old Bookmarks page instead of it being on the toolbar",
+    "code": "get(`document.getElementById('bookmarkrow').style='display:none';document.getElementById('bookmarks').addEventListener('click', () => {window.location.href='ssurf://bookmarks'});`)",
+    "tag": "verified"
+  },
   {
     "title": "NoMoreScroll Lite",
     "description": "A minimal version of NoMoreScroll with no customization options",
     "code": "get(`setInterval(() => (['youtube.com/shorts','tiktok.com','instagram.com/reels','snapchat.com','facebook.com','reddit.com/?feed=home','reddit.com/r/popular','endlessdoomscroller.com','x.com/home','4chan.org','boredpanda.com','hive.blog'].some(site => lasturl.includes(site)) && (ipcRenderer.send('file', '/offline.html?info=NoMoreScroll%20Lite%20Has%20Blocked%20This%20Webpage'))), 5000);`)",
-    "tag": "verified"
+    "tag": null
   },
   {
     "title": "No More Favicons",
