@@ -8,7 +8,7 @@
   {
     "title": "Labelled Buttons",
     "description": "Toolbar buttons use text instead of icons",
-    "code": "get(`document.getElementById('settingsbutton').textContent = 'S'; document.getElementById('tabs').textContent = 'T'; document.getElementById('bookmarks').textContent = 'B';`)",
+    "code": "get(`document.getElementById('settingsbutton').textContent = 'S'; document.getElementById('bookmarks').textContent = 'B';`)",
     "tag": "verified"
   },
   {
