@@ -20,7 +20,7 @@
     {
     "title": "Classic Bookmarks",
     "description": "Brings back the old Bookmarks page instead of it being on the toolbar",
-    "code": "get(`document.getElementById('bookmarkrow').style='display:none';document.getElementById('bookmarks').onclick=()=>{ipcRenderer.send('load-url','ssurf://bookmarks');};`)"
+    "code": "get(`document.getElementById('bookmarkrow').style='display:none';document.getElementById('bookmarks').onclick=()=>{ipcRenderer.send('load-url','ssurf://bookmarks');};`)",
     "tag": "verified"
   },
   {
