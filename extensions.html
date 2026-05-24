@@ -125,26 +125,13 @@ function render(list) {
 }
 
 function installextension(ext) {
-    let installed = JSON.parse(localStorage.getItem("browserextensions") || "[]");
-
     if (installed.some(e => e.id === ext.id)) {
-        alert("already installed");
+        alert("Already installed");
         return;
     }
-
-    installed.push({
-        id: ext.id,
-        title: ext.title,
-        description: ext.description,
-        code: ext.code,
-        tag: ext.tag || null,
-        version: ext.version || "1.0.0",
-        enabled: true,
-        mode: ext.mode || "new"
-    });
-
-    localStorage.setItem("browserextensions", JSON.stringify(installed));
-
+    window.location.href =
+        "ssurf://loadurl?load=extension.install." +
+        encodeURIComponent(JSON.stringify(ext));
     alert("Installed! Restart Shell Surfer");
 }
 
