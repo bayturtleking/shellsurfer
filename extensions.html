@@ -24,10 +24,10 @@ html {
     background: #3a3a3a;
     border-radius: 20px;
     padding: 15px;
+    text-align: left;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    text-align: left;
 }
 
 button {
@@ -81,41 +81,54 @@ async function loadextensions() {
 }
 
 function render(list) {
-    const grid = document.getElementById('grid');
-    grid.innerHTML = '';
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
 
     list.forEach(ext => {
-        const div = document.createElement('div');
-        div.className = 'extension';
+        const div = document.createElement("div");
+        div.className = "extension";
 
-        let taghtml = '';
-        if (ext.tag === 'verified') {
+        let taghtml = "";
+        if (ext.tag === "verified") {
             taghtml = '<p class="verified">Official</p>';
-        } else if (ext.tag === 'flagged') {
+        } else if (ext.tag === "flagged") {
             taghtml = '<p class="flagged">Flagged</p>';
         }
 
-        div.innerHTML = `
-            <h2>${ext.title}</h2>
-            <p>${ext.description}</p>
-            <small>v${ext.version || "1.0.0"}</small>
-            ${taghtml}
-            <button onclick="installextension('${encodeURIComponent(JSON.stringify(ext))}')">
-                Install
-            </button>
-        `;
+        const title = document.createElement("h2");
+        title.textContent = ext.title;
+
+        const desc = document.createElement("p");
+        desc.textContent = ext.description;
+
+        const version = document.createElement("small");
+        version.textContent = "v" + (ext.version || "1.0.0");
+
+        const tag = document.createElement("div");
+        tag.innerHTML = taghtml;
+
+        const btn = document.createElement("button");
+        btn.textContent = "Install";
+
+        btn.addEventListener("click", () => {
+            installextension(ext);
+        });
+
+        div.appendChild(title);
+        div.appendChild(desc);
+        div.appendChild(version);
+        div.appendChild(tag);
+        div.appendChild(btn);
 
         grid.appendChild(div);
     });
 }
 
-function installextension(encoded) {
-    const ext = JSON.parse(decodeURIComponent(encoded));
-
-    let installed = JSON.parse(localStorage.getItem('browserextensions') || '[]');
+function installextension(ext) {
+    let installed = JSON.parse(localStorage.getItem("browserextensions") || "[]");
 
     if (installed.some(e => e.id === ext.id)) {
-        alert('already installed');
+        alert("already installed");
         return;
     }
 
@@ -130,17 +143,17 @@ function installextension(encoded) {
         mode: ext.mode || "new"
     });
 
-    localStorage.setItem('browserextensions', JSON.stringify(installed));
+    localStorage.setItem("browserextensions", JSON.stringify(installed));
 
-    alert('installed! restart shell surfer');
+    alert("Installed! Restart Shell Surfer");
 }
 
 function filterverified() {
-    render(extensions.filter(e => e.tag === 'verified'));
+    render(extensions.filter(e => e.tag === "verified"));
 }
 
 function gotomanager() {
-    window.location.href = 'ssurf://extensions';
+    window.location.href = "ssurf://extensions";
 }
 
 loadextensions();
