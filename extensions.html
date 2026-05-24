@@ -126,7 +126,7 @@ function render(list) {
 
 function installextension(ext) {
     window.location.href =
-        "ssurf://loadurl?load=extension.install." +
+        "/loadurl?load=extension.install." +
         encodeURIComponent(JSON.stringify(ext));
     alert("Installed! Restart Shell Surfer");
 }
