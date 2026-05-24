@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>shell surfer extensions</title>
+<title>Shell Surfer Extensions</title>
 
 <style>
     html {
@@ -65,15 +65,15 @@
     <h1>extension store</h1>
 
     <button onclick="gotomanager()">
-        manage extensions
+        Manage Extensions
     </button>
 
     <button onclick="filterverified()">
-        official only
+        Official Only
     </button>
 
     <button onclick="loadextensions()">
-        reset
+        Reset
     </button>
 </div>
 
@@ -98,9 +98,9 @@ function render(list) {
 
         let taghtml = '';
         if (ext.tag === 'verified') {
-            taghtml = '<p class="verified">official</p>';
+            taghtml = '<p class="verified">Official</p>';
         } else if (ext.tag === 'flagged') {
-            taghtml = '<p class="flagged">flagged</p>';
+            taghtml = '<p class="flagged">Flagged</p>';
         }
 
         div.innerHTML = `
@@ -108,7 +108,7 @@ function render(list) {
             <p>${ext.description}</p>
             ${taghtml}
             <button onclick="installextension('${encodeURIComponent(JSON.stringify(ext))}')">
-                install
+                Install
             </button>
         `;
 
