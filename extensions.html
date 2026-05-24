@@ -125,10 +125,6 @@ function render(list) {
 }
 
 function installextension(ext) {
-    if (installed.some(e => e.id === ext.id)) {
-        alert("Already installed");
-        return;
-    }
     window.location.href =
         "ssurf://loadurl?load=extension.install." +
         encodeURIComponent(JSON.stringify(ext));
