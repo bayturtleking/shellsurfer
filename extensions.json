@@ -1,53 +1,101 @@
 [
   {
+    "id": "colourful_toolbar",
     "title": "Colourful Toolbar",
     "description": "Colourful items on the toolbar",
-    "code": "get(`document.getElementById('tabs').style.color = 'lime'; document.getElementById('bookmarks').style.color = 'yellow'; document.getElementById('settingsbutton').style.color = 'blue';`)",
-    "tag": "verified"
+    "version": "1.0.0",
+    "tag": "verified",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "document.getElementById('tabs').style.color='lime';document.getElementById('bookmarks').style.color='yellow';document.getElementById('settingsbutton').style.color='blue';"
   },
   {
+    "id": "labelled_buttons",
     "title": "Labelled Buttons",
     "description": "Toolbar buttons use text instead of icons",
-    "code": "get(`document.getElementById('settingsbutton').textContent = 'S'; document.getElementById('bookmarks').textContent = 'B';`)",
-    "tag": "verified"
+    "version": "1.0.0",
+    "tag": "verified",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "document.getElementById('settingsbutton').textContent='S';document.getElementById('bookmarks').textContent='B';"
   },
   {
+    "id": "everywhere_canvas",
     "title": "Everywhere is your Canvas",
-    "description": "Draw on any webpage with the toggle at the top left corner. (Might not work in certain Shell Surfer versions)",
-    "code": "get(`ipcRenderer.send('exec-in-page',Buffer.from('KGZ1bmN0aW9uKCl7aWYod2luZG93Ll9kcmF3KXt3aW5kb3cuX2RyYXcucmVtb3ZlKCk7ZGVsZXRlIHdpbmRvdy5fZHJhdztyZXR1cm47fWNvbnN0IGM9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiY2FudmFzIik7Yy53aWR0aD1pbm5lcldpZHRoO2MuaGVpZ2h0PWlubmVySGVpZ2h0O09iamVjdC5hc3NpZ24oYy5zdHlsZSx7cG9zaXRpb246ImZpeGVkIix0b3A6MCxsZWZ0OjAsd2lkdGg6IjEwMCUiLGhlaWdodDoiMTAwJSIsekluZGV4Ojk5OTk5OCxwb2ludGVyRXZlbnRzOiJub25lIn0pO2NvbnN0IGI9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiZGl2Iik7Yi50ZXh0Q29udGVudD0i4pyP77iPIjtPYmplY3QuYXNzaWduKGIuc3R5bGUse3Bvc2l0aW9uOiJmaXhlZCIsdG9wOiIxMHB4IixsZWZ0OiIxMHB4Iix6SW5kZXg6OTk5OTk5LGN1cnNvcjoicG9pbnRlciIsZm9udFNpemU6IjIycHgiLHVzZXJTZWxlY3Q6Im5vbmUiLG9wYWNpdHk6MC40fSk7ZG9jdW1lbnQuYm9keS5hcHBlbmQoYyxiKTtjb25zdCB4PWMuZ2V0Q29udGV4dCgiMmQiKTt4LmxpbmVXaWR0aD0zO3gubGluZUNhcD0icm91bmQiO3guc3Ryb2tlU3R5bGU9IiNmMDAiO2xldCBvbj1mYWxzZSxkcmFnPWZhbHNlO2Iub25jbGljaz0oKT0+e29uPSFvbjtjLnN0eWxlLnBvaW50ZXJFdmVudHM9b24/ImF1dG8iOiJub25lIjtiLnN0eWxlLm9wYWNpdHk9b24/MTowLjQ7fTtjLm9ubW91c2Vkb3duPWU9PntkcmFnPXRydWU7eC5iZWdpblBhdGgoKTt4Lm1vdmVUbyhlLmNsaWVudFgsZS5jbGllbnRZKTt9O2Mub25tb3VzZW1vdmU9ZT0+e2lmKCFkcmFnKXJldHVybjt4LmxpbmVUbyhlLmNsaWVudFgsZS5jbGllbnRZKTt4LnN0cm9rZSgpO307Yy5vbW91c2V1cD1jLm9ubW91c2VsZWF2ZT0oKT0+ZHJhZz1mYWxzZTt3aW5kb3cuX2RyYXc9e3JlbW92ZTooKT0+e2MucmVtb3ZlKCk7Yi5yZW1vdmUoKTt9fTt9KSgp','base64').toString())`)",
+    "description": "Draw on any webpage with toggle (may not work on some versions)",
+    "version": "1.0.0",
+    "tag": null,
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "ipcRenderer.send('exec-in-page',Buffer.from('(function(){if(window._draw){window._draw.remove();delete window._draw;return;}const c=document.createElement('canvas');c.width=innerWidth;c.height=innerHeight;Object.assign(c.style,{position:'fixed',top:0,left:0,zIndex:999999,pointerEvents:'auto'});document.body.appendChild(c);const ctx=c.getContext('2d');let d=false;c.onmousedown=e=>{d=true;ctx.beginPath();ctx.moveTo(e.clientX,e.clientY)};c.onmousemove=e=>{if(!d)return;ctx.lineTo(e.clientX,e.clientY);ctx.strokeStyle='#f00';ctx.lineWidth=3;ctx.stroke()};c.onmouseup=()=>d=false;window._draw=c;})()','utf8').toString())"
+  },
+  {
+    "id": "resizable_toolbar",
     "title": "Resizable Toolbar",
-    "description": "Self-explanatory",
-    "code": "get(`document.querySelectorAll('*').forEach(function(el) { el.style.resize = 'both'; el.style.overflow = 'auto'; });`)",
-    "tag": null
+    "description": "Make all elements resizable",
+    "version": "1.0.0",
+    "tag": null,
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "document.querySelectorAll('*').forEach(el=>{el.style.resize='both';el.style.overflow='auto';});"
   },
-{
+  {
+    "id": "global_dark_mode",
     "title": "Global Dark Mode",
-    "description": "Attempts to force dark mode on every page by detecting and converting light backgrounds.",
-    "code": "get(`ipcRenderer.on('url-changed',function(){ipcRenderer.send('exec-in-page',Buffer.from('ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgiKiIpLmZvckVhY2goZnVuY3Rpb24oZWwpe3ZhciBzPXdpbmRvdy5nZXRDb21wdXRlZFN0eWxlKGVsKTtpZihzLmJhY2tncm91bmRJbWFnZSE9PSJub25lIilyZXR1cm47dmFyIGJnPXMuYmFja2dyb3VuZENvbG9yO2lmKGJnPT09InRyYW5zcGFyZW50Inx8Ymc9PT0icmdiYSgwLCAwLCAwLCAwKSIpe2lmKGVsLnRhZ05hbWUhPT0iQk9EWSImJmVsLnRhZ05hbWUhPT0iSFRNTCIpcmV0dXJuO2VsLnN0eWxlLmJhY2tncm91bmRDb2xvcj0iIzExMSI7cmV0dXJuO312YXIgbT1iZy5tYXRjaCgvXGQrL2cpO2lmKG0mJm0ubGVuZ3RoPj0zKXt2YXIgcj0rbVswXSxnPSttWzFdLGI9K21bMl07dmFyIGJyaWdodD0ocitnK2IpLzM7aWYoYnJpZ2h0PjE4MCllbC5zdHlsZS5iYWNrZ3JvdW5kQ29sb3I9IiMxMTEiO2Vsc2UgaWYoYnJpZ2h0PjgwJiZicmlnaHQ8PTE4MCllbC5zdHlsZS5iYWNrZ3JvdW5kQ29sb3I9IiMyMjIiO312YXIgYz1zLmNvbG9yO3ZhciBtMj1jLm1hdGNoKC9cZCsvZyk7aWYobTImJm0yLmxlbmd0aD49Myl7dmFyIHIyPSttMlswXSxnMj0rbTJbMV0sYjI9K20yWzJdO3ZhciBicmlnaHQyPShyMityMitiMikvMztpZihicmlnaHQyPDEwMCllbC5zdHlsZS5jb2xvcj0iI2VlZSI7fX0pO2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoImlucHV0LGJ1dHRvbix0ZXh0YXJlYSxzZWxlY3QiKS5mb3JFYWNoKGZ1bmN0aW9uKGVsKXtlbC5zdHlsZS5iYWNrZ3JvdW5kPSIjMjIyIjtlbC5zdHlsZS5jb2xvcj0iI2VlZSI7ZWwuc3R5bGUuYm9yZGVyQ29sb3I9IiM0NDQiO30pOw==','base64').toString())})`)",
-    "tag": "verified"
-},
-    {
+    "description": "Forces dark mode on pages",
+    "version": "1.0.0",
+    "tag": "verified",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "document.querySelectorAll('*').forEach(el=>{el.style.background='#222';el.style.color='#eee';el.style.borderColor='#444';});"
+  },
+  {
+    "id": "classic_bookmarks",
     "title": "Classic Bookmarks",
-    "description": "Brings back the old Bookmarks page instead of it being on the toolbar",
-    "code": "get(`document.getElementById('bookmarkrow').style='display:none';document.getElementById('bookmarks').onclick=()=>{ipcRenderer.send('load-url','ssurf://bookmarks');};`)",
-    "tag": "verified"
+    "description": "Restores old bookmarks page behavior",
+    "version": "1.0.0",
+    "tag": "verified",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "document.getElementById('bookmarkrow').style.display='none';document.getElementById('bookmarks').onclick=()=>{ipcRenderer.send('load-url','ssurf://bookmarks');};"
   },
   {
+    "id": "nomorescroll_lite",
     "title": "NoMoreScroll Lite",
-    "description": "A minimal version of NoMoreScroll with no customization options",
-    "code": "get(`setInterval(() => (['youtube.com/shorts','tiktok.com','instagram.com/reels','snapchat.com','facebook.com','reddit.com/?feed=home','reddit.com/r/popular','endlessdoomscroller.com','x.com/home','4chan.org','boredpanda.com','hive.blog'].some(site => lasturl.includes(site)) && (ipcRenderer.send('file', '/offline.html?info=NoMoreScroll%20Lite%20Has%20Blocked%20This%20Webpage'))), 5000);`)",
-    "tag": null
+    "description": "Blocks endless scrolling sites",
+    "version": "1.0.0",
+    "tag": null,
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "setInterval(()=>{if(['youtube.com/shorts','tiktok.com','instagram.com/reels','facebook.com','reddit.com/r/popular','x.com/home'].some(s=>location.href.includes(s))){ipcRenderer.send('file','/offline.html?info=blocked');}},3000);"
   },
   {
+    "id": "no_favicons",
     "title": "No More Favicons",
-    "description": "Removes the favicon from your toolbar",
-    "code": "get(`document.getElementById('favicon').style.display = 'none';`)",
-    "tag": "verified"
+    "description": "Removes favicon display",
+    "version": "1.0.0",
+    "tag": "verified",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "const f=document.getElementById('favicon');if(f)f.style.display='none';"
   },
   {
+    "id": "not_a_virus",
     "title": "Not A Virus",
-    "description": "This is not a virus bro",
-    "code": "get(`setInterval(() => { alert('Did you actually fall for this???') }, 10000);`)",
-    "tag": "flagged"
+    "description": "Totally harmless...",
+    "version": "1.0.0",
+    "tag": "flagged",
+    "enabled": true,
+    "runtime": "page",
+    "mode": "function",
+    "code": "setInterval(()=>alert('did you actually install this?'),10000);"
   }
 ]
