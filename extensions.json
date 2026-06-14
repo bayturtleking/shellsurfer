@@ -32,7 +32,7 @@
     "mode": "function",
     "code": "ipcRenderer.send('exec-in-page', atob('KGZ1bmN0aW9uKCl7aWYod2luZG93Ll9kcmF3KXt3aW5kb3cuX2RyYXcucmVtb3ZlKCk7ZGVsZXRlIHdpbmRvdy5fZHJhdztyZXR1cm47fWNvbnN0IGM9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiY2FudmFzIik7Yy53aWR0aD1pbm5lcldpZHRoO2MuaGVpZ2h0PWlubmVySGVpZ2h0O09iamVjdC5hc3NpZ24oYy5zdHlsZSx7cG9zaXRpb246ImZpeGVkIix0b3A6MCxsZWZ0OjAsekluZGV4Ojk5OTk5OSxwb2ludGVyRXZlbnRzOiJhdXRvIn0pO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYyk7Y29uc3QgY3R4PWMuZ2V0Q29udGV4dCgiMmQiKTtsZXQgZD1mYWxzZTtjLm9ubW91c2Vkb3duPWU9PntkPXRydWU7Y3R4LmJlZ2luUGF0aCgpO2N0eC5tb3ZlVG8oZS5jbGllbnRYLGUuY2xpZW50WSl9O2Mub25tb3VzZW1vdmU9ZT0+e2lmKCFkKXJldHVybjtjdHgubGluZVRvKGUuY2xpZW50WCxlLmNsaWVudFkpO2N0eC5zdHJva2VTdHlsZT0iI2YwMCI7Y3R4LmxpbmVXaWR0aD0zO2N0eC5zdHJva2UoKX07Yy5vbm1vdXNldXA9KCk9PmQ9ZmFsc2U7d2luZG93Ll9kcmF3PWM7fSkoKQ=='))"
 },
-  {
+{
     "id": "resizable_toolbar",
     "title": "Resizable Toolbar",
     "description": "Make all elements resizable",
@@ -41,8 +41,8 @@
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "ipcRenderer.send('exec-in-page', 'ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnKicpLmZvckVhY2goZWw9PntlbC5zdHlsZS5yZXNpemU9J2JvdGgnO2VsLnN0eWxlLm92ZXJmbG93PSdhdXRvJzt9KTs=')"
-  },
+    "code": "ipcRenderer.send('exec-in-page', 'document.querySelectorAll(\\'*\\').forEach(el=>{el.style.resize=\\'both\\';el.style.overflow=\\'auto\\';});')"
+},
   {
     "id": "global_dark_mode",
     "title": "Global Dark Mode",
