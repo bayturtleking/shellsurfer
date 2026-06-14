@@ -21,17 +21,17 @@
     "mode": "function",
     "code": "document.getElementById('settingsbutton').textContent='S';document.getElementById('bookmarks').textContent='B';"
   },
-  {
+{
     "id": "everywhere_canvas",
     "title": "Everywhere is your Canvas",
     "description": "Draw on any webpage with toggle (may not work on some versions)",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tag": null,
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "ipcRenderer.send('exec-in-page',Buffer.from('(function(){if(window._draw){window._draw.remove();delete window._draw;return;}const c=document.createElement('canvas');c.width=innerWidth;c.height=innerHeight;Object.assign(c.style,{position:'fixed',top:0,left:0,zIndex:999999,pointerEvents:'auto'});document.body.appendChild(c);const ctx=c.getContext('2d');let d=false;c.onmousedown=e=>{d=true;ctx.beginPath();ctx.moveTo(e.clientX,e.clientY)};c.onmousemove=e=>{if(!d)return;ctx.lineTo(e.clientX,e.clientY);ctx.strokeStyle='#f00';ctx.lineWidth=3;ctx.stroke()};c.onmouseup=()=>d=false;window._draw=c;})()','utf8').toString())"
-  },
+    "code": "ipcRenderer.send('exec-in-page', atob('KGZ1bmN0aW9uKCl7aWYod2luZG93Ll9kcmF3KXt3aW5kb3cuX2RyYXcucmVtb3ZlKCk7ZGVsZXRlIHdpbmRvdy5fZHJhdztyZXR1cm47fWNvbnN0IGM9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiY2FudmFzIik7Yy53aWR0aD1pbm5lcldpZHRoO2MuaGVpZ2h0PWlubmVySGVpZ2h0O09iamVjdC5hc3NpZ24oYy5zdHlsZSx7cG9zaXRpb246ImZpeGVkIix0b3A6MCxsZWZ0OjAsekluZGV4Ojk5OTk5OSxwb2ludGVyRXZlbnRzOiJhdXRvIn0pO2RvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYyk7Y29uc3QgY3R4PWMuZ2V0Q29udGV4dCgiMmQiKTtsZXQgZD1mYWxzZTtjLm9ubW91c2Vkb3duPWU9PntkPXRydWU7Y3R4LmJlZ2luUGF0aCgpO2N0eC5tb3ZlVG8oZS5jbGllbnRYLGUuY2xpZW50WSl9O2Mub25tb3VzZW1vdmU9ZT0+e2lmKCFkKXJldHVybjtjdHgubGluZVRvKGUuY2xpZW50WCxlLmNsaWVudFkpO2N0eC5zdHJva2VTdHlsZT0iI2YwMCI7Y3R4LmxpbmVXaWR0aD0zO2N0eC5zdHJva2UoKX07Yy5vbm1vdXNldXA9KCk9PmQ9ZmFsc2U7d2luZG93Ll9kcmF3PWM7fSkoKQ=='))"
+}
   {
     "id": "resizable_toolbar",
     "title": "Resizable Toolbar",
