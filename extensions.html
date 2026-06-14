@@ -125,6 +125,7 @@ function render(list) {
 }
 
 function installextension(ext) {
+    if (ext.tag === null) {ext.tag = "Store";}
     window.location.href =
         "/loadurl?load=extension.install." +
         encodeURIComponent(JSON.stringify(ext));
