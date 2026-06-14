@@ -34,14 +34,14 @@
 },
 {
     "id": "resizable_toolbar",
-    "title": "Resizable Toolbar",
+    "title": "Resizable Everything",
     "description": "Make all elements resizable",
-    "version": "1.0.1",
+    "version": "1.3.0",
     "tag": null,
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "ipcRenderer.send('exec-in-page', 'document.querySelectorAll(\\'*\\').forEach(el=>{el.style.resize=\\'both\\';el.style.overflow=\\'auto\\';});')"
+    "code": "ipcRenderer.send('exec-in-page', 'document.querySelectorAll(\"*\").forEach(el=>{el.style.resize=\"both\";el.style.overflow=\"auto\";});')"
 },
   {
     "id": "global_dark_mode",
