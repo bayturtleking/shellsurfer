@@ -41,13 +41,13 @@
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "document.querySelectorAll('*').forEach(el=>{el.style.resize='both';el.style.overflow='auto';});"
+    "code": "ipcRenderer.send('exec-in-page', 'ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnKicpLmZvckVhY2goZWw9PntlbC5zdHlsZS5yZXNpemU9J2JvdGgnO2VsLnN0eWxlLm92ZXJmbG93PSdhdXRvJzt9KTs=')"
   },
   {
     "id": "global_dark_mode",
     "title": "Global Dark Mode",
     "description": "Forces dark mode on pages",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "tag": "verified",
     "enabled": true,
     "runtime": "page",
