@@ -75,7 +75,7 @@ button:hover {
 let extensions = [];
 
 async function loadextensions() {
-    const res = await fetch('https://raw.githubusercontent.com/TurtleWave-Search/shellsurfer/refs/heads/main/extensions.json');
+    const res = await fetch('https://cdn.jsdelivr.net/gh/bayturtleking/shellsurfer@refs/heads/main/extensions.json');
     extensions = await res.json();
     render(extensions);
 }
