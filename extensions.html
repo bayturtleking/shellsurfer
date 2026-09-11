@@ -1,159 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shell Surfer Extensions Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shell Surfer Extensions Store</title>
 
-<style>
-html {
-    font-family: Arial, sans-serif;
-    background: #2c2c2c;
-    color: white;
-    text-align: center;
-}
+    <style>
+        html {
+            font-family: Arial, sans-serif;
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+        }
 
-.extension-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+        .extension-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
-.extension {
-    background: #3a3a3a;
-    border-radius: 20px;
-    padding: 15px;
-    text-align: left;
-    display: flex;
-    border:none;
-    flex-direction: column;
-    gap: 10px;
-    transition: 150ms;
-}
+        .extension {
+            background: linear-gradient(#3a3a3a, #3193c0);
+            background-size: 100% 2000%;
+            background-position-y: 0%;
+            border-radius: 20px;
+            padding: 15px;
+            text-align: left;
+            display: flex;
+            border: 3px solid rgb(97, 97, 97);
+            flex-direction: column;
+            gap: 10px;
+            transition: border 150ms;
+            transition: background-position-y 500ms;
+        }
 
-.extension:hover {
-    border: 3px solid lime;
-}
+        .extension:hover {
+            border: 3px solid rgb(7, 226, 255);
+            background-size: 100% 300%;
+            background-position-y: 10% !important;
+        }
 
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background: #444;
-    color: white;
-}
+        .extension:hover button {
+            background: rgba(150, 150, 150, 0.3);
+            transition: all 150ms;
+        }
 
-button:hover {
-    background: #666;
-}
+        .extension:hover button:hover {
+            background: rgba(150, 150, 150, 0.6);
+        }
 
-.verified {
-    color: #00ccff;
-    font-size: 0.8rem;
-}
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #444;
+            color: white;
+        }
 
-.flagged {
-    color: red;
-    font-size: 0.8rem;
-}
+        button:hover {
+            background: #666;
+        }
 
-.topbar {
-    padding: 20px;
-}
-</style>
+        .verified {
+            color: #00ccff;
+            font-size: 0.8rem;
+        }
+
+        .flagged {
+            color: red;
+            font-size: 0.8rem;
+        }
+
+        .topbar {
+            padding: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="topbar">
-    <h1>Extension Store</h1>
+    <div class="topbar">
+        <h1>SSURF Extension Store</h1>
+        <p>This is the only place to get official extensions! Don't install from untrusted sites.</p>
 
-    <button onclick="gotomanager()">Manage Extensions</button>
-    <button onclick="filterverified()">Official Only</button>
-    <button onclick="loadextensions()">Reset</button>
-</div>
+        <button onclick="gotomanager()">Manage Extensions</button>
+        <button onclick="filterverified()">Official Only</button>
+        <button onclick="loadextensions()">Reset</button>
+    </div>
 
-<div class="extension-grid" id="grid"></div>
+    <div class="extension-grid" id="grid"></div>
 
-<script>
-let extensions = [];
+    <script>
+        let extensions = [];
 
-async function loadextensions() {
-    try {
-        const res = await fetch('https://raw.githubusercontent.com/bayturtleking/shellsurfer/main/extensions.json');
-        if (!res.ok) throw new Error();
-        extensions = await res.json();
-    } catch (err) {
-        const res = await fetch('https://cdn.jsdelivr.net/gh/bayturtleking/shellsurfer@refs/heads/main/extensions.json');
-        extensions = await res.json();
-    }
-    render(extensions);
-}
-
-function render(list) {
-    const grid = document.getElementById("grid");
-    grid.innerHTML = "";
-
-    list.forEach(ext => {
-        const div = document.createElement("div");
-        div.className = "extension";
-
-        let taghtml = "";
-        if (ext.tag === "Store: Verified") {
-            taghtml = '<p class="verified">Official</p>';
-        } else if (ext.tag === "Store: Flagged") {
-            taghtml = '<p class="flagged">Flagged</p>';
+        async function loadextensions() {
+            try {
+                const res = await fetch('https://raw.githubusercontent.com/bayturtleking/shellsurfer/main/extensions.json');
+                if (!res.ok) throw new Error();
+                extensions = await res.json();
+            } catch (err) {
+                const res = await fetch('https://cdn.jsdelivr.net/gh/bayturtleking/shellsurfer@refs/heads/main/extensions.json');
+                extensions = await res.json();
+            }
+            render(extensions);
         }
 
-        const title = document.createElement("h2");
-        title.textContent = ext.title;
+        function render(list) {
+            const grid = document.getElementById("grid");
+            grid.innerHTML = "";
 
-        const desc = document.createElement("p");
-        desc.textContent = ext.description;
+            list.forEach(ext => {
+                const div = document.createElement("div");
+                div.className = "extension";
 
-        const version = document.createElement("small");
-        version.textContent = "v" + (ext.version || "1.0.0");
+                let taghtml = "";
+                if (ext.tag === "Store: Verified") {
+                    taghtml = '<p class="verified">Official</p>';
+                } else if (ext.tag === "Store: Flagged") {
+                    taghtml = '<p class="flagged">Flagged</p>';
+                }
 
-        const tag = document.createElement("div");
-        tag.innerHTML = taghtml;
+                const title = document.createElement("h2");
+                title.textContent = ext.title;
 
-        const btn = document.createElement("button");
-        btn.textContent = "Install";
+                const desc = document.createElement("p");
+                desc.textContent = ext.description;
 
-        btn.addEventListener("click", () => {
-            installextension(ext);
-        });
+                const version = document.createElement("small");
+                version.textContent = "v" + (ext.version || "1.0.0");
 
-        div.appendChild(title);
-        div.appendChild(desc);
-        div.appendChild(version);
-        div.appendChild(tag);
-        div.appendChild(btn);
+                const tag = document.createElement("div");
+                tag.innerHTML = taghtml;
 
-        grid.appendChild(div);
-    });
-}
+                const btn = document.createElement("button");
+                btn.textContent = "Install";
 
-function installextension(ext) {
-    if (ext.tag === null) {ext.tag = "Store";}
-    window.location.href =
-        "/loadurl?load=extension.install." +
-        encodeURIComponent(JSON.stringify(ext));
-    alert("Installed! Restart Shell Surfer");
-}
+                btn.addEventListener("click", () => {
+                    installextension(ext);
+                });
 
-function filterverified() {
-    render(extensions.filter(e => e.tag === "Store: Verified"));
-}
+                div.appendChild(title);
+                div.appendChild(desc);
+                div.appendChild(version);
+                div.appendChild(tag);
+                div.appendChild(btn);
 
-function gotomanager() {
-    window.location.href = "ssurf://extensions";
-}
+                grid.appendChild(div);
+            });
+        }
 
-loadextensions();
-</script>
+        function installextension(ext) {
+            if (ext.tag === null) {ext.tag = "Store";}
+            window.location.href =
+                "/loadurl?load=extension.install." +
+                encodeURIComponent(JSON.stringify(ext));
+            alert("Installed! Restart Shell Surfer");
+        }
+
+        function filterverified() {
+            render(extensions.filter(e => e.tag === "Store: Verified"));
+        }
+
+        function gotomanager() {
+            window.location.href = "ssurf://extensions";
+        }
+
+        loadextensions();
+    </script>
 
 </body>
+
 </html>
