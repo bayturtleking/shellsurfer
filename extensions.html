@@ -83,7 +83,9 @@
 <body>
 
     <div class="topbar">
-        <h1>SSURF Extension Store</h1>
+        <h1 style="margin-bottom: 0;">Shell Surfer</h1>
+        <h2 style="margin-top: 0;">Official Extension Store</h2>
+        <h3 id="notonssurf"  style="color:red; display: none;">You may not be on Shell Surfer. Extensions will not work unless you're using Shell Surfer!</h3>
         <p>This is the only place to get official extensions! Don't install from untrusted sites.</p>
 
         <button onclick="gotomanager()">Manage Extensions</button>
@@ -105,10 +107,10 @@
                 const res = await fetch('https://cdn.jsdelivr.net/gh/bayturtleking/shellsurfer@refs/heads/main/extensions.json');
                 extensions = await res.json();
             }
-            render(extensions);
+            showww(extensions);
         }
 
-        function render(list) {
+        function showww(list) {
             const grid = document.getElementById("grid");
             grid.innerHTML = "";
 
@@ -122,38 +124,30 @@
                 } else if (ext.tag === "Store: Flagged") {
                     taghtml = '<p class="flagged">Flagged</p>';
                 }
-
                 const title = document.createElement("h2");
                 title.textContent = ext.title;
-
-                const desc = document.createElement("p");
-                desc.textContent = ext.description;
-
+                const descc = document.createElement("p");
+                descc.textContent = ext.description;
                 const version = document.createElement("small");
                 version.textContent = "v" + (ext.version || "1.0.0");
-
-                const tag = document.createElement("div");
-                tag.innerHTML = taghtml;
-
-                const btn = document.createElement("button");
-                btn.textContent = "Install";
-
-                btn.addEventListener("click", () => {
+                const tagg = document.createElement("div");
+                tagg.innerHTML = taghtml;
+                const btnn = document.createElement("button");
+                btnn.textContent = "Install";
+                btnn.addEventListener("click", () => {
                     installextension(ext);
                 });
-
                 div.appendChild(title);
-                div.appendChild(desc);
+                div.appendChild(descc);
                 div.appendChild(version);
-                div.appendChild(tag);
-                div.appendChild(btn);
-
+                div.appendChild(tagg);
+                div.appendChild(btnn);
                 grid.appendChild(div);
             });
         }
 
         function installextension(ext) {
-            if (ext.tag === null) {ext.tag = "Store";}
+            if (ext.tag === null) { ext.tag = "Store"; }
             window.location.href =
                 "/loadurl?load=extension.install." +
                 encodeURIComponent(JSON.stringify(ext));
@@ -161,7 +155,31 @@
         }
 
         function filterverified() {
-            render(extensions.filter(e => e.tag === "Store: Verified"));
+            showww(extensions.filter(e => e.tag === "Store: Verified"));
+        }
+        function isevenonssurf() {
+            return /ShellSurfer\//.test(navigator.userAgent);
+        }
+        function ssurfver_hasnew_ext_features(min = "1.10.4") {
+            const mnnfa = navigator.userAgent.match(/ShellSurfer\/(\d+(?:\.\d+)*)/);
+            if (!mnnfa) return false;
+            const havee = mnnfa[1].split(".").map(Number);
+            const needd = min.split(".").map(Number);
+            for (let i = 0; i < Math.max(havee.length, needd.length); i++) {
+                const aeaea = havee[i] || 0;
+                const bbaeab = needd[i] || 0;
+                if (aeaea > bbaeab) return true;
+                if (aeaea < bbaeab) return false;
+            }
+            return true;
+        }
+        if (isevenonssurf()) {
+            if (!ssurfver_hasnew_ext_features("1.10.4")) {
+                document.getElementById("notonssurf").textContent = "Your version of Shell Surfer does not include the newest extension API changes. Some extensions may not work. Consider updating!!"
+               document.getElementById("notonssurf").style.display = "block";
+            }
+        } else {
+            document.getElementById("notonssurf").style.display = "block";
         }
 
         function gotomanager() {
