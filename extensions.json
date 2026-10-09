@@ -42,7 +42,7 @@
   "runtime": "start",
   "mode": "function",
   "code": "(function(){const css='body {background:blue}';const nameof_theme='Example';window['extensiontheme_'+nameof_theme]=function(){const oldone=document.getElementById('uistylesheet');const style=document.createElement('style');style.id='uistylesheet';style.textContent=css;oldone.replaceWith(style);};const inject=`(function(){if(location.href.indexOf('ssurf://settings')!==0)return;const N=${JSON.stringify(nameof_theme)};const sel=document.getElementById('overalltheme');if(!sel)return;let g=document.getElementById('customextgroupp');if(!g){g=document.createElement('optgroup');g.id='customextgroupp';g.label='Custom Themes';sel.append(g);}if(Array.from(g.children).some(function(o){return o.value===N;}))return;const o=document.createElement('option');o.textContent=N;o.value=N;g.append(o);})();`;setInterval(function(){ipcRenderer.send('exec-in-page',inject);},1000);})();"
-}
+},
 {
     "id": "everywhere_canvas",
     "title": "Everywhere is your Canvas",
