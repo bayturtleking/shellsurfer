@@ -36,13 +36,13 @@
   "id": "custom_theme_showcase",
   "title": "Custom Theme Base (Developers)",
   "description": "This extension is for developers. Modify this extension to create your own Shell Surfer themes. To view default Shell Surfer CSS, go to ssurf://customstyles/ssurf.css. Built for 1.10.4 and up.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "tag": "Store: Verified",
   "enabled": true,
   "runtime": "start",
   "mode": "function",
-  "code": "(function(){const css='body {background:blue}';const nameof_theme='Example';window['extensiontheme_'+nameof_theme]=function(){const oldone=document.getElementById('uistylesheet');const style=document.createElement('style');style.id='uistylesheet';style.textContent=css;oldone.replaceWith(style);};const whereoptionsgo=document.getElementById('overalltheme');let optgroupp=document.getElementById('customextgroupp');if(!optgroupp){optgroupp=document.createElement('optgroup');optgroupp.id='customextgroupp';optgroupp.label='Custom Themes';whereoptionsgo.append(optgroupp);}const opt=document.createElement('option');opt.innerHTML=nameof_theme;opt.value=nameof_theme;optgroupp.append(opt);})();"
-},
+  "code": "(function(){const css='body {background:blue}';const nameof_theme='Example';window['extensiontheme_'+nameof_theme]=function(){const oldone=document.getElementById('uistylesheet');const style=document.createElement('style');style.id='uistylesheet';style.textContent=css;oldone.replaceWith(style);};const inject=`(function(){if(location.href.indexOf('ssurf://settings')!==0)return;const N=${JSON.stringify(nameof_theme)};const sel=document.getElementById('overalltheme');if(!sel)return;let g=document.getElementById('customextgroupp');if(!g){g=document.createElement('optgroup');g.id='customextgroupp';g.label='Custom Themes';sel.append(g);}if(Array.from(g.children).some(function(o){return o.value===N;}))return;const o=document.createElement('option');o.textContent=N;o.value=N;g.append(o);})();`;setInterval(function(){ipcRenderer.send('exec-in-page',inject);},1000);})();"
+}
 {
     "id": "everywhere_canvas",
     "title": "Everywhere is your Canvas",
