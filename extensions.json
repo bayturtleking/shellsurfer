@@ -10,10 +10,21 @@
     "mode": "function",
     "code": "document.getElementById('tabs').style.color='lime';document.getElementById('bookmarks').style.color='yellow';document.getElementById('settingsbutton').style.color='blue';"
   },
+    {
+    "id": "ssurf_radio_button",
+    "title": "SSurf Radio on Toolbar",
+    "description": "Adds a SSurf radio button to the toolbar. 1.11R/1.11BETA and newer only.",
+    "version": "1.0.0",
+    "tag": "Store: Verified",
+    "enabled": true,
+    "runtime": "start",
+    "mode": "function",
+    "code": "extension_addbutton('♪', `shellsurf.nav('ssurf://radio');`, 'radiothingytool');"
+  },
 {
   "id": "adaptive_theme_sync",
   "title": "Adaptive Theme Sync",
-  "description": "Matches internal pages to your current browser theme and style. Is not official and may have bugs",
+  "description": "Matches internal pages to your current browser theme and style. Is not official and may have bugs.",
   "version": "1.0.1",
   "tag": null,
   "enabled": true,
