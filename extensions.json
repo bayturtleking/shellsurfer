@@ -13,7 +13,7 @@
     {
     "id": "ssurf_radio_button",
     "title": "SSurf Radio on Toolbar",
-    "description": "Adds a SSurf radio button to the toolbar. 1.11R/1.11BETA and newer only.",
+    "description": "Adds a SSurf radio button to the toolbar. 1.11R and newer only.",
     "version": "1.0.0",
     "tag": "Store: Verified",
     "enabled": true,
