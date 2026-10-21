@@ -1,141 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link id="iconImage" rel="icon" href="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://metatags.io/" />
-<meta property="twitter:title" content="Shell Surfer" />
-<meta property="twitter:description" content="Search the web as quick as a wave with the Shell Surfer web browser" />
-<meta property="og:image" content="https://cdn.glitch.global/369bf8ef-379b-4729-800d-6d834c6d626c/Icon.png?v=1744480750837" />
-      <meta
-      property="og:image"
-      content="https://cdn.glitch.global/369bf8ef-379b-4729-800d-6d834c6d626c/Icon.png?v=1744480750837"
-    />
+    <link id="iconImage" rel="icon"
+        href="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Shell Surfer" />
+    <meta property="twitter:description"
+        content="Search the web as quick as a wave with the Shell Surfer web browser" />
+    <meta property="og:image"
+        content="https://cdn.glitch.global/369bf8ef-379b-4729-800d-6d834c6d626c/Icon.png?v=1744480750837" />
     <title>Shell Surfer</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            height: 200vh;
             background-color: #f8f8f8;
-            background-image: url("https://res.cloudinary.com/dmuudpnkx/video/upload/v1785015822/13978600_1920_1080_24fps_4x_fast_hpdqcq.mp4");
-            background-size: cover;
         }
 
-button, input {
-    font-family: inherit;
-    pointer-events: auto !important;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 30px;
-    font-size: 2vw;
-    background: radial-gradient(circle, rgba(0,255,175,1) 0%, rgba(55,125,177,1) 100%);
-    padding: 0.5rem 1rem;
-    transition: background 500ms ease, transform 500ms ease;
-}
-
-button:hover {transform: scale(1.1);} button:focus{transform: scale(0.01);}
-
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0;
-            transition: transform 1s ease-out, opacity 1s ease-out;
+        button {
+            font-family: inherit;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            border-radius: 30px;
+            font-size: 2vw;
+            background: radial-gradient(circle, rgba(0, 255, 175, 1) 0%, rgba(55, 125, 177, 1) 100%);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background 500ms ease, transform 300ms ease;
         }
 
-        h1 {
-            font-size: 3rem;
-                   webkit-user-drag: none;
-         user-select: none;
-         pointer-events: none;
-            color: #202124;
-            margin: 0;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: transform 1s ease-out, opacity 1s ease-out;
+        button:hover {
+            transform: scale(1.1);
         }
 
-        .image {
-            width: 6vw;
-            margin-top: 20px;
-                   webkit-user-drag: none;
-         user-select: none;
-         pointer-events: none;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: transform 1s ease-out, opacity 1s ease-out;
+        button:active {
+            transform: scale(0.95);
         }
-        .parallax {
+
+        .dapara {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: cover;
+            object-fit: cover;
             z-index: -1;
-            transform: scale(1.2);
+            pointer-events: none;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .datagss {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 20vh;
+            font-size: 3rem;
+            color: #202124;
+            text-align: center;
+            margin: 0;
+            min-height: 1.2em;
+            user-select: none;
+            transition: top 0.8s ease;
+        }
+
+        .datagss::after {
+            content: "|";
+            margin-left: 4px;
+            animation: blinkyblink 0.8s steps(1) infinite;
+        }
+
+        @keyframes blinkyblink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .content {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            font-size: 3rem;
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+            color: #202124;
+            margin: 0 0 20px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 1s ease-out 0.3s, opacity 1s ease-out 0.3s;
+        }
+
+        .image {
+            width: 6vw;
+            min-width: 60px;
+            margin-bottom: 20px;
+            -webkit-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+        .content.show h1,
+        .content.show .image {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #blue {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            transition: 1000ms;
+            opacity: 0;
+            pointer-events: none;
+            background: #14a7e0;
+            background: linear-gradient(180deg, rgba(20, 167, 224, 1) 0%, rgba(113, 87, 199, 1) 100%);
         }
     </style>
 </head>
+
 <body>
-  <div style="width:100vw; height:100vh; position:fixed; z-index:0; transition:1000ms; opacity:0; background: #14a7e0; background: linear-gradient(180deg,rgba(20, 167, 224, 1) 0%, rgba(113, 87, 199, 1) 100%);" id="blue"> </div>
-    <div class="parallax"></div>
-    <div class="content">
-        <img id="logo" class="image" src="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png" alt="Icon">
-        <h1 id="text1">Surf the web as quick as a wave</h1>
+    <video id="daviddd" style="opacity: 0.3;" class="dapara" autoplay muted loop playsinline
+        src="https://res.cloudinary.com/dmuudpnkx/video/upload/v1785015822/13978600_1920_1080_24fps_4x_fast_hpdqcq.mp4"></video>
+    <div id="blue"></div>
+
+    <section class="hero">
+        <h2 id="datagss" class="datagss"></h2>
+    </section>
+
+    <section class="content" id="install">
+        <img id="logo" class="image"
+            src="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png"
+            alt="Icon">
+        <h1 id="text1">Use Shell Surfer.</h1>
         <button id="button" onclick="installpage()">Install</button>
-    </div>
+    </section>
 
     <script>
-      const paramstring = window.location.search;
-      const urlparams = new URLSearchParams(paramstring);
-      const updatemode = urlparams.get("updatemode");
-        window.addEventListener('scroll', () => {
-            const content = document.querySelector('.content');
-            const h1 = document.getElementById("text1");
-            const text2 = document.getElementById("text2");
-            const image = document.getElementById("logo");
+        const urlparams = new URLSearchParams(window.location.search);
+        const updatemode = urlparams.get("updatemode");
+        const content = document.getElementById("install");
+        const blue = document.getElementById("blue");
 
-            const scrollpos = window.scrollY;
-            const winh = window.innerHeight;
+        new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    content.classList.add("show");
+                }
+            });
+        }, {threshold: 0.3}).observe(content);
 
-            if (scrollpos + winh > content.offsetTop) {
-                content.style.opacity = 1;
-                content.style.transform = 'translateY(0)';
+        let dacoolwords = [
+            "Surf the web as quick as a wave...",
+            "Surf with more privacy...",
+            "Surf with more customization...",
+            "Surf with control..."
+        ];
+        const dathingywithdatex = document.getElementById("datagss");
+        let daphrasin = 0;
+        let dacharin = 0;
+        let dodeletin = false;
+        let daoffs = 0;
+        function scrolltoinstall() {
+            content.scrollIntoView({behavior: "smooth", block: "center"});
+        }
+        document.getElementById("daviddd").playbackRate = 2;
+
+        function datyploopppy() {
+            const daphras = dacoolwords[daphrasin];
+            dathingywithdatex.textContent = daphras.slice(0, dacharin);
+
+            if (!dodeletin) {
+                if (dacharin < daphras.length) {
+                    dacharin++;
+                    setTimeout(datyploopppy, 40);
+                } else if (daphrasin === dacoolwords.length - 1) {
+                    setTimeout(scrolltoinstall, 1500);
+                } else {
+                    dodeletin = true;
+                    setTimeout(datyploopppy, 1500);
+                }
+            } else {
+                if (dacharin > 4) {
+                    dacharin--;
+                    setTimeout(datyploopppy, 40);
+                } else {
+                    dodeletin = false;
+                    daphrasin++;
+                    dacharin = 4;
+                    daoffs += 40;
+                    dathingywithdatex.style.top = `calc(20vh + ${daoffs}px)`;
+                    setTimeout(datyploopppy, 600);
+                }
             }
-
-            if (scrollpos + winh > h1.offsetTop) {
-                h1.style.opacity = 1;
-                h1.style.transform = 'translateY(0)';
-            }
-
-            if (scrollpos + winh > image.offsetTop + 100) {
-                image.style.opacity = 1;
-                image.style.transform = 'translateY(0)';
-            }
-        });
+        }
+        if (updatemode) {
+            dacoolwords = ["We hope this new update will please you...", "Make sure to close Shell Surfer and run the installer after downloading"];
+            datyploopppy();
+        } else {
+            datyploopppy();
+        }
 
         function installpage() {
-          document.getElementById("blue").style.zIndex = "1000";
-          document.getElementById("blue").style.opacity = "1";
+            blue.style.zIndex = "1000";
+            blue.style.opacity = "1";
+            blue.style.pointerEvents = "auto";
             window.location.href = "https://github.com/bayturtleking/shellsurfer/releases/latest/download/shellsurfer.msi";
+            setTimeout(() => {
+                blue.style.opacity = "0";
+                blue.style.pointerEvents = "none";
+                blue.style.zIndex = "-2";
+            }, 2500);
         }
-      if (updatemode) {
-          const h1 = document.getElementById("text1");
-           const button = document.getElementById("button");
-        h1.textContent = "Update Shell Surfer";
-                button.textContent = "Update";
-      }
+
+        if (updatemode) {
+            document.getElementById("text1").textContent = "Update Shell Surfer";
+            document.getElementById("button").textContent = "Update";
+        }
     </script>
 </body>
+
 </html>
