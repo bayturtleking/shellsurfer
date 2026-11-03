@@ -8,7 +8,7 @@
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "document.getElementById('tabs').style.color='lime';document.getElementById('bookmarks').style.color='yellow';document.getElementById('settingsbutton').style.color='blue';"
+    "code": "const tabs = document.getElementById('tabs'); if (tabs) tabs.style.color = 'lime'; const tablist = document.getElementById('tablist'); if (tablist) tablist.style.color = 'lime'; const bookmarks = document.getElementById('bookmarks'); if (bookmarks) bookmarks.style.color = 'yellow'; const settingsbutton = document.getElementById('settingsbutton'); if (settingsbutton) settingsbutton.style.color = 'blue'; const windowpop = document.getElementById('windowpop'); if (windowpop) windowpop.style.color = 'lime'; const radioextbutonthingy = document.getElementById('radiothingytool'); if (radioextbutonthingy) radioextbutonthingy.style.color = 'red';"
   },
     {
     "id": "ssurf_radio_button",
@@ -58,12 +58,12 @@
     "id": "labelled_buttons",
     "title": "Labelled Buttons",
     "description": "Toolbar buttons use text instead of icons",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "tag": "Store: Verified",
     "enabled": true,
     "runtime": "page",
     "mode": "function",
-    "code": "document.getElementById('settingsbutton').textContent='S';document.getElementById('bookmarks').textContent='B';"
+    "code": "const windowpop = document.getElementById('windowpop'); const radioextbutonthingy = document.getElementById('radiothingytool'); const settingsbutton = document.getElementById('settingsbutton'); const bookmarks = document.getElementById('bookmarks'); if (windowpop) windowpop.textContent = 'P'; if (settingsbutton) settingsbutton.textContent = 'S'; if (bookmarks) bookmarks.textContent = 'B'; setTimeout(() => { if (radioextbutonthingy) radioextbutonthingy.textContent = 'R'; }, 100);"
   },
 {
   "id": "custom_theme_showcase",
