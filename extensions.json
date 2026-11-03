@@ -21,6 +21,17 @@
     "mode": "function",
     "code": "extension_addbutton('♪', `shellsurf.nav('ssurf://radio');`, 'radiothingytool');"
   },
+  {
+  "id": "chat_extension",
+  "title": "Live Chat",
+  "description": "Chat with other users using the extension live! (1.12R+)",
+  "version": "1.0.0",
+  "tag": null,
+  "enabled": true,
+  "runtime": "start",
+  "mode": "function",
+  "code": "extension_addbutton('<span>C</span>', `\n    <!doctype html>\n    <html>\n      <body>\n        <iframe src='https://www3.cbox.ws/box/?boxid=3561877&boxtag=VAAw7w' style='width:100vw; height:100vh;' allowtransparency='yes' allow='autoplay' frameborder='0' marginheight='0' marginwidth='0' scrolling='auto'></iframe>\n      </body>\n    </html>\n`, 'ssurfchatt', { popup: true });"
+},
 {
   "id": "adaptive_theme_sync",
   "title": "Adaptive Theme Sync",
