@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,14 +18,12 @@
             scroll-behavior: smooth;
             overflow: hidden;
         }
-
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
         }
-
         button {
             font-family: inherit;
             border: 1px solid #000000;
@@ -38,15 +35,12 @@
             cursor: pointer;
             transition: background 500ms ease, transform 300ms ease;
         }
-
         button:hover {
             transform: scale(1.1);
         }
-
         button:active {
             transform: scale(0.95);
         }
-
         .dapara {
             position: fixed;
             top: 0;
@@ -57,13 +51,11 @@
             z-index: -1;
             pointer-events: none;
         }
-
         .hero {
             position: relative;
             height: 100vh;
             overflow: hidden;
         }
-
         .datagss {
             position: absolute;
             left: 0;
@@ -77,19 +69,16 @@
             user-select: none;
             transition: top 0.8s ease;
         }
-
         .datagss::after {
             content: "|";
             margin-left: 4px;
             animation: blinkyblink 0.8s steps(1) infinite;
         }
-
         @keyframes blinkyblink {
             50% {
                 opacity: 0;
             }
         }
-
         .content {
             min-height: 100vh;
             display: flex;
@@ -100,12 +89,10 @@
             transform: translateY(50px);
             transition: transform 1s ease-out, opacity 1s ease-out;
         }
-
         .content.show {
             opacity: 1;
             transform: translateY(0);
         }
-
         h1 {
             font-size: 3rem;
             -webkit-user-drag: none;
@@ -117,7 +104,6 @@
             transform: translateY(50px);
             transition: transform 1s ease-out 0.3s, opacity 1s ease-out 0.3s;
         }
-
         .image {
             width: 6vw;
             min-width: 60px;
@@ -129,13 +115,11 @@
             transform: translateY(50px);
             transition: transform 1s ease-out, opacity 1s ease-out;
         }
-
         .content.show h1,
         .content.show .image {
             opacity: 1;
             transform: translateY(0);
         }
-
         #blue {
             width: 100vw;
             height: 100vh;
@@ -151,30 +135,25 @@
         }
     </style>
 </head>
-
 <body>
     <video id="daviddd" style="opacity: 0.3;" class="dapara" autoplay muted loop playsinline
         src="https://res.cloudinary.com/dmuudpnkx/video/upload/v1785015822/13978600_1920_1080_24fps_4x_fast_hpdqcq.mp4"></video>
     <div id="blue"></div>
-
     <section class="hero">
         <h2 id="datagss" class="datagss"></h2>
     </section>
-
     <section class="content" id="install">
         <img id="logo" class="image"
             src="https://res.cloudinary.com/dmuudpnkx/image/upload/v1778970391/6cf49a1c-b01f-416a-a891-d1194da0f334-8_dw2o4b.png"
             alt="Icon">
         <h1 id="text1">Use Shell Surfer.</h1>
-        <button id="button" onclick="installpage()">Install</button>
+        <button id="button" onclick="dainstallthingy()">Install</button>
     </section>
-
     <script>
         const urlparams = new URLSearchParams(window.location.search);
         const updatemode = urlparams.get("updatemode");
         const content = document.getElementById("install");
         const blue = document.getElementById("blue");
-
         new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -182,7 +161,6 @@
                 }
             });
         }, {threshold: 0.3}).observe(content);
-
         let dacoolwords = [
             "Surf the web as quick as a wave...",
             "Surf with more privacy...",
@@ -198,11 +176,9 @@
             content.scrollIntoView({behavior: "smooth", block: "center"});
         }
         document.getElementById("daviddd").playbackRate = 2;
-
         function datyploopppy() {
             const daphras = dacoolwords[daphrasin];
             dathingywithdatex.textContent = daphras.slice(0, dacharin);
-
             if (!dodeletin) {
                 if (dacharin < daphras.length) {
                     dacharin++;
@@ -233,24 +209,28 @@
         } else {
             datyploopppy();
         }
-
-        function installpage() {
+        function iswindowzzz() {
+            const dapladdformm = ((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "") + " " + navigator.userAgent;
+            return /windows|win32|win64|wow64/i.test(dapladdformm);
+        }
+        function dainstallthingy() {
             blue.style.zIndex = "1000";
             blue.style.opacity = "1";
             blue.style.pointerEvents = "auto";
-            window.location.href = "https://github.com/bayturtleking/shellsurfer/releases/latest/download/shellsurfer.msi";
+            const daurlll = iswindowzzz()
+                ? "https://github.com/bayturtleking/shellsurfer/releases/latest/download/shellsurfer.msi"
+                : "https://github.com/bayturtleking/shellsurfer/releases/latest";
+            window.location.href = daurlll;
             setTimeout(() => {
                 blue.style.opacity = "0";
                 blue.style.pointerEvents = "none";
                 blue.style.zIndex = "-2";
             }, 2500);
         }
-
         if (updatemode) {
             document.getElementById("text1").textContent = "Update Shell Surfer";
             document.getElementById("button").textContent = "Update";
         }
     </script>
 </body>
-
 </html>
