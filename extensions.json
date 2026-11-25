@@ -14,7 +14,7 @@
   "id": "ssurfium",
   "title": "SSurfium Style",
   "description": "Makes Shell Surfer look like Chromium. Made for 1.13R+",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tag": null,
   "enabled": true,
   "runtime": "start",
