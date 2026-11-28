@@ -1,5 +1,16 @@
 [
     {
+  "id": "plusattab",
+  "title": "Plus next to tabs",
+  "description": "Moves the new tab button next to existing tabs and not at the whole other side of the toolbar.",
+  "version": "1.0.0",
+  "tag": "Store: Verified",
+  "enabled": true,
+  "runtime": "start",
+  "mode": "function",
+  "code": "(function(){try{const thestyleee=document.createElement('style');thestyleee.textContent='#tabrow #tablist{flex:0 1 auto !important;}';document.head.appendChild(thestyleee);setInterval(function(){const sizzzstyleee=document.getElementById('tabsizestyle');thestyleee.disabled=!!sizzzstyleee&&/flex:\\s*1 1 0/.test(sizzzstyleee.textContent);},1000);}catch(error){console.error('plusnexttotab fail cuz of thisss: ',error);}})();"
+},
+    {
         "id": "colourful_toolbar",
         "title": "Colourful Toolbar",
         "description": "Colourful items on the toolbar",
