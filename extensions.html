@@ -14,7 +14,7 @@
             text-align: center;
         }
 
-        .extension-grid {
+        .holdtheextensionss {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
@@ -26,6 +26,7 @@
             background-size: 100% 2000%;
             background-position-y: 0%;
             border-radius: 20px;
+            height: 400px;
             padding: 15px;
             text-align: left;
             display: flex;
@@ -45,6 +46,10 @@
         .extension:hover button {
             background: rgba(150, 150, 150, 0.3);
             transition: all 150ms;
+        }
+
+        .extension button {
+            margin-top: auto;
         }
 
         .extension:hover button:hover {
@@ -77,6 +82,32 @@
         .topbar {
             padding: 20px;
         }
+
+        .searchbar {
+            padding: 0 20px;
+        }
+
+        .searchbar input {
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            padding: 14px;
+            border: solid 3px #616161;
+            border-radius: 12px;
+            background: #3a3a3a;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 150ms;
+        }
+
+        .searchbar input:focus {
+            border-color: rgb(7, 226, 255);
+        }
+
+        .searchbar input::placeholder {
+            color: #aaaaaa;
+        }
     </style>
 </head>
 
@@ -85,15 +116,18 @@
     <div class="topbar">
         <h1 style="margin-bottom: 0;">Shell Surfer</h1>
         <h2 style="margin-top: 0;">Official Extension Store</h2>
-        <h3 id="notonssurf"  style="color:red; display: none;">You may not be on Shell Surfer. Extensions will not work unless you're using Shell Surfer!</h3>
+        <h3 id="notonssurf" style="color:red; display: none;">You may not be on Shell Surfer. Extensions will not work
+            unless you're using Shell Surfer!</h3>
         <p>This is the only place to get official extensions! Don't install from untrusted sites.</p>
-
+        <button onclick="location.href='https://tally.so/r/e5RK2x'">Developers</button>
         <button onclick="gotomanager()">Manage Extensions</button>
         <button onclick="filterverified()">Official Only</button>
-        <button onclick="loadextensions()">Reset</button>
+        <button onclick="document.getElementById('search').value = ''; loadextensions()">Reset</button>
     </div>
-
-    <div class="extension-grid" id="grid"></div>
+    <div class="searchbar">
+        <input type="text" id="search" placeholder="Search for extensions!" oninput="searcforem()">
+    </div>
+    <div class="holdtheextensionss" id="grid"></div>
 
     <script>
         let extensions = [];
@@ -108,6 +142,14 @@
                 extensions = await res.json();
             }
             showww(extensions);
+        }
+
+        function searcforem() {
+            const search = document.getElementById("search").value.toLowerCase().trim();
+            showww(extensions.filter(e =>
+                e.title.toLowerCase().includes(search) ||
+                e.description.toLowerCase().includes(search)
+            ));
         }
 
         function showww(list) {
@@ -132,16 +174,16 @@
                 version.textContent = "v" + (ext.version || "1.0.0");
                 const tagg = document.createElement("div");
                 tagg.innerHTML = taghtml;
-                const btnn = document.createElement("button");
-                btnn.textContent = "Install";
-                btnn.addEventListener("click", () => {
+                const dabutonn = document.createElement("button");
+                dabutonn.textContent = "Install";
+                dabutonn.addEventListener("click", () => {
                     installextension(ext);
                 });
                 div.appendChild(title);
                 div.appendChild(descc);
                 div.appendChild(version);
                 div.appendChild(tagg);
-                div.appendChild(btnn);
+                div.appendChild(dabutonn);
                 grid.appendChild(div);
             });
         }
@@ -160,7 +202,7 @@
         function isevenonssurf() {
             return /ShellSurfer\//.test(navigator.userAgent);
         }
-        function ssurfver_hasnew_ext_features(min = "1.10.4") {
+        function ssurfver_hasnew_ext_features(min = "1.13.0") {
             const mnnfa = navigator.userAgent.match(/ShellSurfer\/(\d+(?:\.\d+)*)/);
             if (!mnnfa) return false;
             const havee = mnnfa[1].split(".").map(Number);
@@ -174,9 +216,9 @@
             return true;
         }
         if (isevenonssurf()) {
-            if (!ssurfver_hasnew_ext_features("1.12.0")) {
+            if (!ssurfver_hasnew_ext_features("1.13.0")) {
                 document.getElementById("notonssurf").textContent = "Your version of Shell Surfer does not include the newest extension API changes. Some extensions may not work. Consider updating!!"
-               document.getElementById("notonssurf").style.display = "block";
+                document.getElementById("notonssurf").style.display = "block";
             }
         } else {
             document.getElementById("notonssurf").style.display = "block";
