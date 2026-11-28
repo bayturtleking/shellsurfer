@@ -209,6 +209,17 @@
         "code": "ipcRenderer.send('exec-in-page', 'if([\"youtube.com/shorts\",\"tiktok.com\",\"instagram.com/reels\",\"facebook.com\",\"reddit.com/r/popular\",\"x.com/home\"].some(s=>location.href.includes(s))){ipcRenderer.send(\"file\",\"/offline.html?info=blocked\");}')"
     },
     {
+  "id": "cattoolbar",
+  "title": "Cat Button",
+  "description": "Adds a button to your toolbar that just shows a random cat",
+  "version": "1.0.0",
+  "tag": "Store: Verified",
+  "enabled": true,
+  "runtime": "start",
+  "mode": "function",
+  "code": "extension_addbutton('<span>😺</span>', `\n<!doctype html>\n<html>\n<head>\n<style>\nhtml, body {\n    width: 100%;\n    height: 100%;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n    background: #111;\n}\nimg {\n    width: 100%;\n    height: 100%;\n    object-fit: contain;\n    display: block;\n}\n</style>\n</head>\n<body>\n<img src=\"https://cataas.com/cat/says/Shell%20Surfer%20Cats\" alt=\"Random cat\">\n</body>\n</html>\n`, 'catshow', { popup: true });"
+},
+    {
         "id": "no_favicons",
         "title": "No More Favicons",
         "description": "Removes favicon display",
